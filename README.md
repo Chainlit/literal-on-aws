@@ -18,10 +18,22 @@
 - `aws sts get-caller-identity` to get your AWS account number
 - `aws configure get region` to get your AWS region
 
+## Registration
+
+To self-host LiteralAI you will need to be registered as described in [the documentation](https://docs.getliteral.ai/self-hosting/get-started). Depending on the option you select, you will receive either :
+
+* A Literal Client ID and Authorization Token to run the public image
+* Or a Docker PAT to run the private image
+
 ## Deploy
 
-7. [Get your Docker Personal Access Token (PAT)](https://docs.getliteral.ai/self-hosting/get-started)
-8. Deploy the infra: `npx cdk deploy --all --parameters EcsStack:dockerPat=LITERAL_DOCKER_PAT`
+If you opted for the public image, you should add the required [env variables](https://docs.getliteral.ai/self-hosting/deployment#literal-ai-authorization) then run :
+
+`npx cdk deploy --all`
+
+If you opted for the private image, just run :
+
+`npx cdk deploy --all --parameters EcsStack:dockerPat=LITERAL_DOCKER_PAT`
 
 You should now be able to see the Literal sign in page.
 
